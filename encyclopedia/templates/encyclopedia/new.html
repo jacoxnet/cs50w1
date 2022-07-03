@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Article
+{% endblock %}
+
+{% block body %}
+
+    <div class="new">
+        <form action="", method="post">
+            {% csrf_token %}
+            <h1>Compose a new article</h1>
+            <div class="form-group" >
+                <div class="col-xs-6">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" value="{{ title }}">
+                </div>
+                <label for="myedit">Article Text</label>
+                <textarea style="min-width:100%" class="form-control" rows="20" 
+                    id="myedit" name="myedit" type="text">{{ article }}
+                </textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Save article</button>
+        </form>
+        <div>
+            <a href="{% url 'encyclopedia:index' %}">Cancel new article and return Home</a>
+        </div>
+    </div>
+
+{% endblock %}

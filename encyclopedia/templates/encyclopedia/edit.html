@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Editing: {{ title }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="edit">
+        <form action="", method="post">
+            {% csrf_token %}
+            <h1>Please edit the article: {{ title }}</h1>
+            <div class="form-group">
+                <textarea style="min-width:100%" class="form-control" rows="20" name="myedit" 
+                    type="text">{{ article | safe }}</textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Save edit</button>
+            <button class="btn btn-warning" type="reset">Reset to original</button>
+        </form>
+        <div>
+            <a href="{% url 'encyclopedia:index' %}">Cancel edit and return Home</a>
+        </div>
+    </div>
+
+{% endblock %}
